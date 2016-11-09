@@ -28,15 +28,11 @@ int main(int argc, char** argv) {
     //
     char con;
     //Rules
-    string rule1 = "E->E+T";
-    string rule2 = "E->E-T";
-    string rule3 = "E->T";
-    string rule4 = "T->T*F";
-    string rule5 = "T->T/F";
-    string rule6 = "T->F";
-    string rule7 = "F->(E)";
-    string rule8 = "F->i";
+    string rule[8] = { "E->E+T","E->E-T","E->T","T->T*F","T->T/F", "T->F",
+    "F->(E)" ,"F->i" };
     
+   string split = rule8.substr(3,rule8.length() - 3);
+    cout << split << endl;
     //Firsts
     string first_e = "(i";
     string first_t = "(i";
@@ -97,7 +93,7 @@ int main(int argc, char** argv) {
 }
 
 void read(stack<char>& st, queue<char>& input, string table[17][11], char key[11]){
-    char terminal = ' ' //This is for the push function if used.
+    char terminal = ' '; //This is for the push function if used.
     char token;
     token = input.front();
     input.pop();
