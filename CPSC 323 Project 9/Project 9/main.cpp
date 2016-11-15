@@ -32,6 +32,8 @@ void pR(stack<string>& st, queue<char>& input, string table[17][11], string
     key[11],string value, int row, int col, string nt, string rule[8]
     ,bool& ntd,string& prev);//Push function
 
+void displayStack(stack<string> st);
+
 int main(int argc, char** argv) {
     //
     bool ntd = false;
@@ -112,7 +114,6 @@ void read(stack<string>& st, queue<char>& input, string table[17][11], string ke
     }
     if(!ntd){
         prev = token;
-        cout << prev << endl;
         input.pop();
     }
     int row, col;
@@ -175,7 +176,7 @@ void pS1(stack<string>& st, queue<char>& input, string table[17][11], string
         string temp;
         ss >> temp;
         st.push(temp);
-        //display the stack
+        displayStack(st);
         read(st,input,table,key,rule,ntd,prev);
 }
 void pR(stack<string>& st, queue<char>& input, string table[17][11], string
@@ -196,7 +197,7 @@ void pR(stack<string>& st, queue<char>& input, string table[17][11], string
             }
             //display the stack
         cout << "Pop: " <<  st.top() << endl;
-        //display the stack
+        displayStack(st);
         stringstream ss;
         ss << line[0];
         ss >> nt;
@@ -221,5 +222,16 @@ void pR(stack<string>& st, queue<char>& input, string table[17][11], string
     else{
         p(st,input,table,key,value,row,col,nt,rule,ntd,prev);
     }
+}
+
+void displayStack(stack<string> st){
+    cout << "Stack : ";
+    string c;
+    while(!st.empty()){ 
+        c = st.top() + " " + c;
+        st.pop();
+    }
+    cout << c;
+    cout << endl;
 }
 
